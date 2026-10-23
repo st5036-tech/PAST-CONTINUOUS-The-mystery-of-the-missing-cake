@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Detective Academy — Past Continuous</title>
+<style>
+:root{--ink:#392a20;--brown:#705441;--red:#b6443b;--paper:#fbf4e7;--paper2:#fffaf1;--line:#dfcbb0;--muted:#78695c;--gold:#d5b78e;--green:#55765b}
+*{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:#f5ecdc;color:var(--ink);font-family:Georgia,'Times New Roman',serif}
+.topbar{background:#302720;color:#fff8ec;display:flex;align-items:center;justify-content:space-between;gap:18px;padding:13px 22px;position:sticky;top:0;z-index:10;box-shadow:0 3px 0 #b99c78}
+.brand{font-size:clamp(1.45rem,3vw,2.35rem);font-weight:900;letter-spacing:.02em;line-height:1}.subtitle{font:600 15px Arial,sans-serif;color:#d6c9b8;margin-top:5px}.score-pill{border:1px solid #cdb18b;border-radius:30px;padding:12px 18px;font:700 15px Arial,sans-serif;white-space:nowrap}
+.hero{background:repeating-linear-gradient(0deg,#fbf4e7,#fbf4e7 7px,#f8efdf 8px);padding:34px 20px 29px;border-bottom:8px solid var(--brown);display:flex;align-items:center;justify-content:center;gap:28px;min-height:300px}
+.detective{width:132px;min-width:100px;filter:drop-shadow(2px 3px 0 #d8c4a9)}
+.eyebrow{font:800 15px Arial,sans-serif;letter-spacing:.15em;color:var(--red);text-transform:uppercase}
+.hero h1{font-size:clamp(3rem,7vw,5.6rem);line-height:.82;margin:8px 0 17px;letter-spacing:.015em;text-shadow:3px 4px 0 #d7c5ad}
+.hero .tagline{font-size:clamp(1rem,2vw,1.4rem);margin:0 0 18px}.stamp{display:inline-block;border:3px solid var(--red);color:var(--red);padding:8px 12px;font:800 15px Arial,sans-serif;letter-spacing:.12em;transform:rotate(-9deg)}
+nav{display:flex;gap:0;background:#e6d7c2;border-bottom:1px solid #cbb69b;padding:0 9px;overflow-x:auto}
+nav button{border:0;border-bottom:5px solid transparent;background:transparent;color:#594638;font:700 17px Arial,sans-serif;padding:21px 24px;cursor:pointer;white-space:nowrap}
+nav button.active{background:#fbf4e7;border-bottom-color:var(--red);color:#241a14}nav button:hover{background:#f5e8d4}
+main{max-width:1450px;margin:0 auto;padding:30px 24px 50px}.layout{display:grid;grid-template-columns:minmax(0,1.8fr) minmax(300px,1fr);gap:26px}
+.panel{background:var(--paper2);border:1px solid #d8c2a5;box-shadow:5px 5px 0 #e0cfb6;padding:27px 30px;margin-bottom:22px}
+.panel-inner{border:1px solid #ead9c0;padding:21px}.eyebrow.small{font-size:13px}.panel h2{font-size:clamp(1.8rem,3vw,2.8rem);margin:4px 0 20px;line-height:1.05}.panel h3{font-size:1.65rem;margin:4px 0 15px}.lead{font-size:clamp(1.05rem,1.7vw,1.35rem);line-height:1.55}.muted{color:var(--muted)}.rule{height:1px;background:var(--line);margin:20px 0}
+label{display:block;font-weight:bold;margin:12px 0 7px;font-size:1.03rem}input[type=text],select,textarea{width:100%;border:1px solid #c8ad8e;background:#fffdf8;padding:12px 13px;font:16px Georgia,serif;color:var(--ink);border-radius:2px}textarea{min-height:82px;resize:vertical}input:focus,select:focus,textarea:focus{outline:3px solid #ead5b5;border-color:#987456}
+button,.btn{cursor:pointer}.btn{border:0;background:var(--red);color:white;font:700 15px Arial,sans-serif;padding:13px 18px;border-radius:3px;display:inline-block;text-align:center}.btn:hover{background:#96352f}.btn.secondary{background:#6c5543}.btn.light{background:#ead9c0;color:#3d2d21}.btn:disabled{opacity:.45;cursor:not-allowed}.button-row{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.objective{background:#f2e4cf;border-left:5px solid var(--gold);padding:17px 18px;line-height:1.5}.suspects{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:14px;margin-top:15px}.suspect{border:1px solid var(--line);background:#fff8ed;padding:15px;display:flex;align-items:center;gap:13px}.avatar{width:58px;height:58px;flex:0 0 58px;border-radius:50%;background:#ead7bb;display:grid;place-items:center}.avatar svg{width:48px;height:48px}.suspect strong{font-size:1.15rem}.suspect p{margin:5px 0 0;line-height:1.4;color:#6b5a4b}
+.challenge-head{display:flex;justify-content:space-between;align-items:flex-start;gap:14px}.points{border:1px solid var(--gold);border-radius:20px;padding:8px 12px;font:800 13px Arial,sans-serif;white-space:nowrap;color:#8f392f}.timer{font:700 13px Arial,sans-serif;color:#8d3b32;letter-spacing:.1em;text-transform:uppercase;margin-bottom:10px}
+.question{padding:16px 0;border-bottom:1px solid #e8d9c5}.question:last-child{border-bottom:0}.question p{font-size:1.1rem;margin:0 0 12px;line-height:1.45}.options{display:flex;flex-wrap:wrap;gap:9px}.option{display:flex;align-items:center;gap:8px;background:#fffdf8;border:1px solid #d8c3a6;padding:10px 12px;border-radius:3px;cursor:pointer;font-size:1rem}.option:has(input:checked){background:#f0dfc6;border-color:#9b7652}.option input{accent-color:var(--red)}
+.feedback{padding:13px 15px;margin-top:15px;background:#f1e5d2;border-left:4px solid var(--gold);line-height:1.5}.feedback.good{border-left-color:var(--green)}.feedback.bad{border-left-color:var(--red)}.hidden{display:none!important}.report-score{font-size:2.4rem;font-weight:bold}.progress-track{height:10px;background:#e7d8c3;margin:10px 0 18px}.progress-fill{height:100%;background:var(--red);width:0;transition:width .3s}.score-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}.score-card{padding:17px;background:#f5e8d5;border:1px solid #dfcbb0}.score-card strong{display:block;font-size:1.35rem;margin-top:7px}.footer{text-align:center;padding:22px 12px;color:#796858;font:700 12px Arial,sans-serif;letter-spacing:.12em}
+@media(max-width:850px){.layout{grid-template-columns:1fr}.hero{gap:16px}.panel{padding:18px}.panel-inner{padding:15px}.score-list{grid-template-columns:1fr}.topbar{align-items:flex-start}.score-pill{font-size:12px;padding:10px}}
+@media(max-width:520px){.hero{padding:26px 15px;gap:10px}.detective{width:85px;min-width:75px}.hero h1{font-size:2.8rem}.hero .eyebrow{font-size:11px}.stamp{font-size:11px;padding:6px}.topbar{padding:12px}.subtitle{font-size:12px}.score-pill{white-space:normal;max-width:120px;text-align:center}nav button{padding:17px 15px;font-size:15px}main{padding:20px 12px}.suspects{grid-template-columns:1fr}.lead{font-size:1.05rem}}
+@media print{.topbar,nav,.hero,.no-print,.footer{display:none!important}body{background:white}.panel{box-shadow:none;break-inside:avoid}main{padding:0;max-width:none}.layout{display:block}.hidden{display:block!important}}
+</style>
+</head>
+<body>
+<header class="topbar">
+ <div><div class="brand">DETECTIVE ACADEMY</div><div class="subtitle">English Investigation Unit · Case No. 06:00</div></div>
+ <div class="score-pill">TEAM SCORE: <span id="topScore">0</span>/100</div>
+</header>
+<section class="hero">
+ <svg class="detective" viewBox="0 0 130 160" role="img" aria-label="Illustration of a detective with a magnifying glass">
+  <path d="M18 49 Q65 -8 112 49 L101 57 L28 57Z" fill="#8c6a4f" stroke="#392a20" stroke-width="4"/><path d="M10 49 L120 49 L111 61 L19 61Z" fill="#b89a76" stroke="#392a20" stroke-width="4"/>
+  <path d="M30 68 Q31 36 65 36 Q99 36 100 68 L96 103 L34 103Z" fill="#f0c39a" stroke="#392a20" stroke-width="4"/>
+  <path d="M30 64 Q43 45 65 50 Q87 45 100 64 L95 44 L35 44Z" fill="#392a20"/>
+  <circle cx="51" cy="73" r="4" fill="#392a20"/><circle cx="79" cy="73" r="4" fill="#392a20"/><path d="M55 91 Q65 99 77 90" fill="none" stroke="#a65d51" stroke-width="4" stroke-linecap="round"/>
+  <path d="M37 106 L93 106 L111 154 L19 154Z" fill="#725a45" stroke="#392a20" stroke-width="4"/><path d="M47 106 L65 126 L83 106" fill="#f7e8d3" stroke="#392a20" stroke-width="3"/><path d="M33 139 L97 111 M97 139 L33 111" stroke="#a78b69" stroke-width="3"/>
+  <circle cx="89" cy="76" r="19" fill="none" stroke="#6c5543" stroke-width="6"/><path d="M102 91 L119 108" stroke="#6c5543" stroke-width="7" stroke-linecap="round"/>
+ </svg>
+ <div><div class="eyebrow">Confidential case file</div><h1>PAST<br>CONTINUOUS</h1><p class="tagline">The mystery of the missing cake</p><span class="stamp">CASE OPEN</span></div>
+</section>
+<nav class="no-print" aria-label="Investigation sections">
+ <button class="active" data-tab="case">Case file</button><button data-tab="c1">Challenge 1</button><button data-tab="c2">Challenge 2</button><button data-tab="c3">Challenge 3</button><button data-tab="report">Final report</button>
+</nav>
+<main>
+<section id="case" class="tab">
+ <div class="layout">
+  <div>
+   <article class="panel"><div class="panel-inner"><div class="eyebrow small">The incident</div><h2>WHAT HAPPENED?</h2>
+    <p class="lead">Someone stole the birthday cake at <strong>6:00 p.m. yesterday</strong>. The kitchen was left in a mess. Your team must investigate the suspects and report what they were doing at that exact time.</p>
+    <p class="lead">Complete the three challenges to collect evidence. Read each question carefully and submit your answers to receive points.</p>
+    <div class="button-row no-print"><button class="btn" onclick="showTab('c1')">Start investigation</button></div>
+   </div></article>
+   <article class="panel"><div class="eyebrow small">Mission objective</div><h3>What detectives must know</h3><div class="objective">Use <strong>was/were + verb-ing</strong> to describe actions in progress in the past and form accurate questions.</div>
+    <div class="rule"></div><div class="eyebrow small">Meet the suspects</div>
+    <div class="suspects">
+     <div class="suspect"><div class="avatar"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="23" r="15" fill="#efc49a" stroke="#392a20" stroke-width="2.5"/><path d="M15 23 Q12 3 30 6 Q48 5 45 23 L40 15 L22 14Z" fill="#55402f"/><circle cx="25" cy="23" r="2"/><circle cx="36" cy="23" r="2"/><path d="M24 31 Q30 35 36 31" fill="none" stroke="#9a5a4e" stroke-width="2"/><path d="M11 57 Q12 39 30 39 Q48 39 49 57" fill="#657c8a" stroke="#392a20" stroke-width="2.5"/></svg></div><div><strong>Max</strong><p>Serious and studious. He says he was studying.</p></div></div>
+     <div class="suspect"><div class="avatar"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="21" cy="23" r="13" fill="#edbd91" stroke="#392a20" stroke-width="2"/><circle cx="40" cy="23" r="13" fill="#edbd91" stroke="#392a20" stroke-width="2"/><path d="M8 20 Q8 5 21 8 L31 15 L40 8 Q53 5 53 20" fill="#7d5540"/><circle cx="18" cy="23" r="1.8"/><circle cx="24" cy="23" r="1.8"/><circle cx="37" cy="23" r="1.8"/><circle cx="43" cy="23" r="1.8"/><path d="M17 30 Q21 33 25 30 M36 30 Q40 33 44 30" fill="none" stroke="#9a5a4e" stroke-width="2"/><path d="M6 57 Q8 40 23 40 Q30 40 30 47 Q32 40 40 40 Q54 40 56 57" fill="#9e6b57" stroke="#392a20" stroke-width="2"/></svg></div><div><strong>The twins</strong><p>They say they were playing video games.</p></div></div>
+     <div class="suspect"><div class="avatar"><svg viewBox="0 0 60 60" aria-hidden="true"><circle cx="30" cy="23" r="15" fill="#efc49a" stroke="#392a20" stroke-width="2.5"/><path d="M14 25 Q8 3 30 5 Q51 5 46 25 L42 17 L18 17Z" fill="#a76e46"/><circle cx="25" cy="23" r="2"/><circle cx="36" cy="23" r="2"/><path d="M24 31 Q30 35 36 31" fill="none" stroke="#9a5a4e" stroke-width="2"/><path d="M11 57 Q12 39 30 39 Q48 39 49 57" fill="#b77e83" stroke="#392a20" stroke-width="2.5"/></svg></div><div><strong>Lucy</strong><p>She says she was talking on the phone.</p></div></div>
+     <div class="suspect"><div class="avatar"><svg viewBox="0 0 60 60" aria-hidden="true"><path d="M10 18 L5 5 L23 13 Q30 8 37 13 L55 5 L50 23 Q56 39 42 45 L45 55 L15 55 L18 45 Q4 35 10 18Z" fill="#b58b61" stroke="#392a20" stroke-width="2.5"/><ellipse cx="30" cy="32" rx="18" ry="15" fill="#e9d3b5" stroke="#392a20" stroke-width="2"/><circle cx="23" cy="28" r="2.5"/><circle cx="37" cy="28" r="2.5"/><ellipse cx="30" cy="35" rx="4" ry="3" fill="#392a20"/><path d="M25 40 Q30 45 35 40" fill="none" stroke="#392a20" stroke-width="2"/></svg></div><div><strong>Bruno</strong><p>The dog. The evidence says he was sleeping.</p></div></div>
+    </div>
+   </article>
+  </div>
+  <aside>
+   <article class="panel"><div class="eyebrow small">Team registration</div><h3>Detective team</h3><label for="teamName">Team name</label><input id="teamName" type="text" placeholder="Enter your agency name" maxlength="60"><p class="muted" style="line-height:1.5">Team size: 5 students. Share the reading, writing, grammar-checking and reporting tasks.</p><div class="button-row"><button class="btn secondary" onclick="saveTeam()">Save team name</button></div><div id="teamFeedback" class="feedback hidden" role="status"></div></article>
+   <article class="panel"><div class="eyebrow small">Investigation status</div><h3>Evidence collected</h3><div class="progress-track"><div class="progress-fill" id="progressFill"></div></div><p><strong><span id="doneCount">0</span> of 3</strong> challenges submitted</p><div class="rule"></div><p class="muted">PAST CONTINUOUS · CASE FILE 06:00</p><p>Observe carefully. Check the evidence. Report accurately.</p></article>
+  </aside>
+ </div>
+</section>
+<section id="c1" class="tab hidden"><article class="panel"><div class="timer">Evidence collection · 12 minutes</div><div class="challenge-head"><div><div class="eyebrow small">Challenge 1</div><h2>Identify the evidence</h2></div><div class="points">20 POINTS</div></div><p class="lead">Select the correct past continuous verb phrase in each sentence.</p><div id="c1questions"></div><div class="button-row no-print"><button class="btn" onclick="submitC1()">Submit evidence</button><button class="btn light" onclick="showTab('c2')">Continue to Challenge 2</button></div><div id="c1feedback" class="feedback hidden" aria-live="polite"></div></article></section>
+<section id="c2" class="tab hidden"><article class="panel"><div class="timer">Witness interviews · 15 minutes</div><div class="challenge-head"><div><div class="eyebrow small">Challenge 2</div><h2>Interrogate the suspects</h2></div><div class="points">30 POINTS</div></div><p class="lead">Complete each question and answer using the past continuous.</p><div id="c2questions"></div><div class="button-row no-print"><button class="btn" onclick="submitC2()">Submit interviews</button><button class="btn light" onclick="showTab('c3')">Continue to Challenge 3</button></div><div id="c2feedback" class="feedback hidden" aria-live="polite"></div></article></section>
+<section id="c3" class="tab hidden"><article class="panel"><div class="timer">Final investigation · 13 minutes</div><div class="challenge-head"><div><div class="eyebrow small">Challenge 3</div><h2>Solve the mystery</h2></div><div class="points">50 POINTS</div></div><p class="lead">Use the evidence from the case file. Write three sentences and two questions with answers.</p>
+ <label for="sentence1">1. Write a sentence about Max.</label><textarea id="sentence1" placeholder="Example: Max was studying at 6:00 p.m."></textarea>
+ <label for="sentence2">2. Write a sentence about Lucy.</label><textarea id="sentence2" placeholder="Write a complete sentence."></textarea>
+ <label for="sentence3">3. Write a sentence about the twins or Bruno.</label><textarea id="sentence3" placeholder="Write a complete sentence."></textarea>
+ <label for="question4">4. Write a question about one suspect.</label><textarea id="question4" placeholder="Example: What was Max doing at 6:00 p.m.?"></textarea>
+ <label for="answer5">5. Answer your question in a complete sentence.</label><textarea id="answer5" placeholder="Write a complete answer."></textarea>
+ <label for="conclusion">Investigation conclusion</label><textarea id="conclusion" placeholder="Who do you think took the cake? Explain your reasoning using the evidence."></textarea>
+ <div class="button-row no-print"><button class="btn" onclick="submitC3()">Submit final report</button><button class="btn light" onclick="showTab('report')">View final report</button></div><div id="c3feedback" class="feedback hidden" aria-live="polite"></div>
+ <p class="muted">Teacher review: this written report receives a provisional completion score. The teacher should verify grammar and reasoning before confirming the final score.</p>
+</article></section>
+<section id="report" class="tab hidden"><article class="panel" id="printArea"><div class="eyebrow small">Investigation summary</div><h2>Final report</h2><p id="reportTeam" class="lead">Unnamed Detective Team — investigation progress: 0 of 3 challenges submitted.</p><div class="progress-track"><div class="progress-fill" id="reportProgress"></div></div><div class="score-list"><div class="score-card">Challenge 1<strong id="score1">0 / 20</strong></div><div class="score-card">Challenge 2<strong id="score2">0 / 30</strong></div><div class="score-card">Challenge 3<strong id="score3">0 / 50</strong></div></div><div class="rule"></div><div id="reportStatus"><h3>More evidence needed</h3><p>Current score: 0/100. Completed challenges: 0/3. Challenge 3 receives a provisional completion score and requires teacher review.</p></div><div id="writtenReport" class="hidden"></div><div class="button-row no-print"><button class="btn" onclick="window.print()">Print final report</button><button class="btn secondary" onclick="restart()">Restart investigation</button></div><p class="muted">Teacher note: Challenge 3 is evaluated using a classroom rubric. The app awards points for completing the written report; the teacher should verify grammatical accuracy and reasoning before confirming the final score.</p></article></section>
+</main>
+<div class="footer">PAST CONTINUOUS · CASE FILE 06:00<br><br>OBSERVE CAREFULLY. CHECK THE EVIDENCE. REPORT ACCURATELY.</div>
+<script>
+const state={team:'',scores:{c1:null,c2:null,c3:null},submitted:{c1:false,c2:false,c3:false}};
+const c1=[
+ {q:'1. I ___ at 6:00 yesterday.',opts:['studied','was studying','were studying'],a:1},
+ {q:'2. I ___ on the phone.',opts:['were talking','was talk','was talking'],a:2},
+ {q:'3. We ___ video games.',opts:['was playing','were playing','played'],a:1},
+ {q:'4. The dog ___.',opts:['was sleeping','were sleeping','was sleep'],a:0}
+];
+const c2=[
+ {q:'1. Complete the question: What ___ Max doing at 6:00 p.m.?',opts:['were','was','did'],a:1,follow:'Answer: He ___ studying.',opts2:['were','was','did'],a2:1},
+ {q:'2. Complete the question: What ___ Lucy doing?',opts:['were','was','did'],a:1,follow:'Answer: She was ___ on the phone.',opts2:['talk','talking','talked'],a2:1},
+ {q:'3. Complete the question: What ___ the twins doing?',opts:['was','were','did'],a:1,follow:'Answer: They ___ playing video games.',opts2:['was','were','did'],a2:1}
+];
+function renderQuestions(){
+ document.getElementById('c1questions').innerHTML=c1.map((x,i)=>`<div class="question"><p><strong>${x.q}</strong></p><div class="options">${x.opts.map((o,j)=>`<label class="option"><input type="radio" name="c1q${i}" value="${j}"> ${o}</label>`).join('')}</div></div>`).join('');
+ document.getElementById('c2questions').innerHTML=c2.map((x,i)=>`<div class="question"><p><strong>${x.q}</strong></p><div class="options">${x.opts.map((o,j)=>`<label class="option"><input type="radio" name="c2q${i}a" value="${j}"> ${o}</label>`).join('')}</div><p style="margin-top:15px"><strong>${x.follow}</strong></p><div class="options">${x.opts2.map((o,j)=>`<label class="option"><input type="radio" name="c2q${i}b" value="${j}"> ${o}</label>`).join('')}</div></div>`).join('');
+}
+function showTab(id){document.querySelectorAll('.tab').forEach(el=>el.classList.toggle('hidden',el.id!==id));document.querySelectorAll('nav button').forEach(b=>b.classList.toggle('active',b.dataset.tab===id));if(id==='report')updateReport();window.scrollTo({top:0,behavior:'smooth'});}
+document.querySelectorAll('nav button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+function saveTeam(){const v=document.getElementById('teamName').value.trim();if(!v){const f=document.getElementById('teamFeedback');f.textContent='Enter a team name before saving.';f.className='feedback bad';return;}state.team=v;const f=document.getElementById('teamFeedback');f.textContent=`Team "${v}" registered. Your investigation is ready.`;f.className='feedback good';updateReport();}
+function selected(name){const el=document.querySelector(`input[name="${name}"]:checked`);return el?Number(el.value):null}
+function showFeedback(id,msg,good){const el=document.getElementById(id);el.textContent=msg;el.className='feedback '+(good?'good':'bad');}
+function submitC1(){let answered=0,correct=0;c1.forEach((x,i)=>{let v=selected('c1q'+i);if(v!==null){answered++;if(v===x.a)correct++;}});if(answered<c1.length){showFeedback('c1feedback','Please answer all four questions before submitting your evidence.',false);return;}state.scores.c1=Math.round(correct/4*20);state.submitted.c1=true;showFeedback('c1feedback',`Evidence submitted: ${correct}/4 correct. You earned ${state.scores.c1}/20 points.`,correct===4);updateReport();}
+function submitC2(){let answered=0,correct=0;c2.forEach((x,i)=>{let a=selected(`c2q${i}a`),b=selected(`c2q${i}b`);if(a!==null)answered++;if(b!==null)answered++;if(a===x.a)correct++;if(b===x.a2)correct++;});if(answered<6){showFeedback('c2feedback','Please answer all six items (three questions and three answers) before submitting.',false);return;}state.scores.c2=Math.round(correct/6*30);state.submitted.c2=true;showFeedback('c2feedback',`Interview notes submitted: ${correct}/6 correct. You earned ${state.scores.c2}/30 points.`,correct===6);updateReport();}
+function submitC3(){const ids=['sentence1','sentence2','sentence3','question4','answer5'];const vals=ids.map(id=>document.getElementById(id).value.trim());if(vals.some(v=>!v)){showFeedback('c3feedback','Complete all five writing tasks before submitting your report.',false);return;}const filled=vals.filter(v=>v.length>=8).length;state.scores.c3=Math.round(filled/5*50);state.submitted.c3=true;showFeedback('c3feedback',`Final report submitted. Provisional completion score: ${state.scores.c3}/50. Your teacher must review grammar and reasoning before confirming this score.`,true);updateReport();}
+function updateReport(){const total=Object.values(state.scores).reduce((s,v)=>s+(v||0),0),done=Object.values(state.submitted).filter(Boolean).length;document.getElementById('topScore').textContent=total;document.getElementById('doneCount').textContent=done;document.getElementById('progressFill').style.width=(done/3*100)+'%';document.getElementById('reportProgress').style.width=(done/3*100)+'%';document.getElementById('reportTeam').textContent=`${state.team||'Unnamed Detective Team'} — investigation progress: ${done} of 3 challenges submitted.`;document.getElementById('score1').textContent=`${state.scores.c1||0} / 20`;document.getElementById('score2').textContent=`${state.scores.c2||0} / 30`;document.getElementById('score3').textContent=`${state.scores.c3||0} / 50`;document.getElementById('reportStatus').innerHTML=done===3?`<h3>Investigation complete — teacher review required</h3><p>Current provisional score: <strong>${total}/100</strong>. All three challenges have been submitted. The teacher should verify the final written report before confirming the score.</p>`:`<h3>More evidence needed</h3><p>Current score: ${total}/100. Completed challenges: ${done}/3. Challenge 3 receives a provisional completion score and requires teacher review.</p>`;const ids=['sentence1','sentence2','sentence3','question4','answer5','conclusion'];let report=ids.map((id,i)=>{let v=document.getElementById(id).value.trim();return v?`<p><strong>${['1. Max','2. Lucy','3. Twins or Bruno','4. Question','5. Answer','Conclusion'][i]}:</strong> ${escapeHtml(v)}</p>`:''}).join('');const wr=document.getElementById('writtenReport');wr.innerHTML=report?'<div class="rule"></div><h3>Team written evidence</h3>'+report:'';wr.classList.toggle('hidden',!report);}
+function escapeHtml(s){return s.replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));}
+function restart(){if(!confirm('Restart the investigation? All answers and scores will be cleared.'))return;state.team='';state.scores={c1:null,c2:null,c3:null};state.submitted={c1:false,c2:false,c3:false};document.getElementById('teamName').value='';document.querySelectorAll('input[type=radio]').forEach(x=>x.checked=false);['sentence1','sentence2','sentence3','question4','answer5','conclusion'].forEach(id=>document.getElementById(id).value='');['c1feedback','c2feedback','c3feedback'].forEach(id=>document.getElementById(id).className='feedback hidden');document.getElementById('teamFeedback').className='feedback hidden';updateReport();showTab('case');}
+renderQuestions();updateReport();
+</script>
+</body>
+</html>
